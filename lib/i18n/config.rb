@@ -10,6 +10,15 @@ module I18n
     def locale=(locale)
       @locale = locale.to_sym rescue nil
     end
+    
+    def lang
+      @lang ||= default_locale
+    end
+
+    # Sets the current locale pseudo-globally, i.e. in the Thread.current hash.
+    def lang=(lang)
+      @lang = lang.to_sym rescue nil
+    end
 
     # Returns the current backend. Defaults to +Backend::Simple+.
     def backend
